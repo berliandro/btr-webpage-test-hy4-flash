@@ -103,7 +103,7 @@ The other five pages — shop, media, titles, matches and community — share th
 - Red as ground, not trim; cream paper as the quiet counter-surface.
 - Hangtags, woven labels, barcode-like strips and stitched dividers as the component vocabulary.
 - Square corners throughout; no rounded UI chrome.
-- Three quiet, user-pinned loops: the champions photograph breathes slowly, the facts rail slides continuously, and the roster section's halftone dots breathe one by one; all pause offscreen. The photo, copy and hangtag also sit on pointer-driven depth planes. Everything else is still except immediate hover feedback.
+- Three quiet, user-pinned loops: the champions photograph breathes slowly, the facts rail slides continuously, and a few soft blobs swell the roster section's fine halftone dots as they drift; all pause offscreen. The photo, copy and hangtag also sit on pointer-driven depth planes. Everything else is still except immediate hover feedback.
 - Honest, plainspoken copy that never implies team endorsement.
 - The roster home leads; the other pages inherit the shell and carry their own documented patterns.
 - Tab stops are actions: the selector rack reveals one player at a time, and focus is never visually removed.
@@ -207,11 +207,11 @@ Everything is square. Corners are 0px, buttons and cards are rectangles, and the
 - **Support:** A skip link targets `#main-content`; the full link set remains in the footer.
 
 ### Halftone field across the roster section — roster home
-- **Style:** A comic halftone on one `<canvas>` that fills the roster section exactly. Team-red dots sit on the cream ground at fixed opacity (`.22`), in a regular 30px grid (34px on narrow screens). The section clips the canvas, so no dot crosses its edge or bleeds into the neighbouring bands.
-- **Motion:** Each dot grows and shrinks on its own phase: its radius oscillates between about half and one and a quarter times its base, driven by a diagonal phase offset plus a small per-dot jitter. Neighbouring dots breathe independently. The field is never scaled, slid or rotated as a sheet, and its colour and opacity never change.
-- **Budget:** One canvas, one batched path fill per frame, device pixel ratio capped at 2. The loop runs only while the section is on screen and the tab is visible; it stops under `prefers-reduced-motion`, where a static halftone remains. A `ResizeObserver` keeps the backing store matched to the box after fonts and images settle layout.
+- **Style:** A fine comic halftone on one `<canvas>` that fills the roster section exactly. Team-red dots sit on the cream ground at fixed opacity (`.18`), in a tight 20px grid (22px on narrow screens) with a roughly 1.3px base radius, so the screen reads as if zoomed out. The section clips the canvas, so no dot crosses its edge or bleeds into the neighbouring bands.
+- **Motion:** Almost every dot stays at its base size. A few soft blobs drift across the field: each has a smooth radial falloff that swells the dots near its centre and fades to nothing at its edge, so the enlarged dots read as a clump with a gradient rather than a hard disc. Blobs drift, pulse wider and narrower, fade out at the end of their life, then respawn at a fresh random position with a new direction and size. The field itself is never scaled, slid or rotated as a sheet, and its colour and opacity never change.
+- **Budget:** One canvas, one batched path fill per frame, device pixel ratio capped at 2, four blobs on desktop and two on narrow screens. The loop runs only while the section is on screen and the tab is visible; it stops under `prefers-reduced-motion`, where a static halftone remains. A `ResizeObserver` keeps the backing store matched to the box after fonts and images settle layout.
 
-**The Halftone Rule.** The dots are printed texture on the cream paper, not a backdrop effect: they stay inside the section, keep one red at fixed opacity, and breathe by changing each dot's radius — never by scaling, sliding or rotating the field.
+**The Halftone Rule.** The dots are printed texture on the cream paper, not a backdrop effect: they stay inside the section, keep one red at fixed opacity, and most stay at base size. Movement belongs to a few drifting blobs that swell dots locally with a soft edge — never to a uniform per-dot wave or a scaled, sliding field.
 
 ### Champions hero — roster home
 - **Composition:** Full-bleed 1920×1080 photograph under a left-to-right ink-to-red gradient plus a 28% red multiply wash, so the celebration stays on-world.

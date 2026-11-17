@@ -76,7 +76,23 @@ document.addEventListener('DOMContentLoaded', function () {
     var htVisible = false;
     var htFrame = 0;
     var htDots = [];
-    var htW = 0, htH = 0, htGap = 30, htRadius = 2.4;
+    var htBlobs = [];
+    var htW = 0, htH = 0, htGap = 20, htBase = 1.3, htLast = 0;
+
+    var htSpawn = function (blob) {
+      var angle = Math.random() * Math.PI * 2;
+      var speed = 0.006 + Math.random() * 0.014;
+      blob.x = Math.random() * htW;
+      blob.y = Math.random() * htH;
+      blob.vx = Math.cos(angle) * speed;
+      blob.vy = Math.sin(angle) * speed;
+      blob.radius = Math.min(htW, htH) * (0.10 + Math.random() * 0.13);
+      blob.age = 0;
+      blob.life = 7000 + Math.random() * 9000;
+      blob.phase = Math.random() * Math.PI * 2;
+      blob.strength = 0;
+      blob.curRadius = blob.radius;
+    };
 
     var htMeasure = function () {
       var rect = halftone.getBoundingClientRect();
@@ -87,19 +103,20 @@ document.addEventListener('DOMContentLoaded', function () {
       halftone.height = Math.round(htH * dpr);
       htCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
       htCtx.fillStyle = getComputedStyle(halftone).color;
-      htGap = htW < 640 ? 34 : 30;
-      htRadius = htGap * 0.08;
+      htGap = htW < 640 ? 22 : 20;
+      htBase = htGap * 0.065;
       htDots = [];
       for (var y = htGap / 2; y < htH; y += htGap) {
         for (var x = htGap / 2; x < htW; x += htGap) {
-          var col = Math.round(x / htGap);
-          var row = Math.round(y / htGap);
-          htDots.push({
-            x: x,
-            y: y,
-            phase: (col + row) * 0.42 + ((col * 7 + row * 11) % 4) * 0.11
-          });
+          htDots.push({ x: x, y: y });
         }
+      }
+      htBlobs = [];
+      var count = htW < 640 ? 2 : 4;
+      for (var b = 0; b < count; b++) {
+        var blob = {};
+        htSpawn(blob);
+        htBlobs.push(blob);
       }
     };
 
@@ -108,12 +125,41 @@ document.addEventListener('DOMContentLoaded', function () {
       htCtx.beginPath();
       for (var i = 0; i < htDots.length; i++) {
         var d = htDots[i];
-        var wave = htReduced ? 0.5 : 0.5 + 0.5 * Math.sin(t * 0.0013 + d.phase);
-        var r = htRadius * (0.5 + 0.85 * wave);
+        var swell = 0;
+        for (var b = 0; b < htBlobs.length; b++) {
+          var bl = htBlobs[b];
+          if (bl.strength <= 0) continue;
+          var dx = d.x - bl.x;
+          var dy = d.y - bl.y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist >= bl.curRadius) continue;
+          var f = 1 - dist / bl.curRadius;
+          swell += f * f * (3 - 2 * f) * bl.strength;
+        }
+        if (swell > 1) swell = 1;
+        var r = htReduced ? htBase : htBase * (1 + swell * 2.4);
         htCtx.moveTo(d.x + r, d.y);
         htCtx.arc(d.x, d.y, r, 0, Math.PI * 2);
       }
       htCtx.fill();
+
+      if (htReduced) return;
+      var dt = htLast ? Math.min(t - htLast, 50) : 16;
+      htLast = t;
+      for (var j = 0; j < htBlobs.length; j++) {
+        var cur = htBlobs[j];
+        cur.age += dt;
+        var p = cur.age / cur.life;
+        if (p >= 1) { htSpawn(cur); p = 0; }
+        cur.x += cur.vx * dt;
+        cur.y += cur.vy * dt;
+        if (cur.x < -cur.radius) cur.x = htW + cur.radius;
+        if (cur.x > htW + cur.radius) cur.x = -cur.radius;
+        if (cur.y < -cur.radius) cur.y = htH + cur.radius;
+        if (cur.y > htH + cur.radius) cur.y = -cur.radius;
+        cur.strength = Math.sin(Math.PI * p);
+        cur.curRadius = cur.radius * (0.82 + 0.22 * Math.sin(t * 0.0006 + cur.phase));
+      }
     };
 
     var htLoop = function (t) {
