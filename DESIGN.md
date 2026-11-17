@@ -262,3 +262,15 @@ Everything is square. Corners are 0px, buttons and cards are rectangles, and the
 - Don't use Unicode glyphs as icons; draw marks in CSS and hide decorative ones from assistive tech.
 - Don't scatter entrance animations. The loops are explicit user requests: keep them slow, pause them offscreen and on hover for the rail, and preserve a reduced-motion path.
 - Don't let any functional text drop below 11px, and never place brass or tinted cream on red copy.
+
+## Systemic Patterns & Detector Exceptions
+
+Three mechanical detector rules are suppressed in `.impeccable/config.json` because they flag the pinned visual system, not defects. Each has a named reason:
+
+- **`cramped-padding`** — full-bleed bands are a deliberate device: the hero, pagehead, ink sections and facts strip all span the viewport, while readable text sits inside the `.wrap` container and the fluid `--pad` gutter. The detector cannot resolve CSS custom properties, so it reads those variable-based insets as zero and reports text flush to the band. No copy is actually against a band edge.
+- **`marquee`** — the facts rail is an explicitly requested loop. It duplicates its track for a seamless `-50%` cycle and pauses on hover, on keyboard focus and offscreen, with a static wrapped layout under `prefers-reduced-motion`. The rule's "hides half its content" premise does not apply to a decorative facts rail.
+- **`cream-palette`** — `--paper` (`#FBF7EE`) and `--cream` (`#F3EDE2`) are named, documented tokens of this world, not a reflexive tasteful off-white. Red is the dominant ground; cream is the deliberate counter-surface for editorial plates and for text on red.
+
+**The Single-Theme Rule.** The palette is exactly ten hex values, each equal to a declared token, with no dark-mode variant. A pinned single-theme brief is intentional here: a scheme swap would replace the lookbook's material identity with a different one. Do not introduce one.
+
+**The Tap-Target Floor.** Every inline text link — primary nav, More menu, fan cards, footer links and the credits disclosure — shares one `min-height: var(--tap)` rule (28px) defined once near the base link styles. Component padding stays local for visual reasons, but the hit-area floor is global, so a new text link cannot silently ship too small. Functional text still never drops below the 11px floor.

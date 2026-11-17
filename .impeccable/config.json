@@ -1,3 +1,6 @@
 {
-  "buildPath": "comp"
+  "buildPath": "comp",
+  "detector": {
+    "ignoreRules": ["cramped-padding", "marquee", "cream-palette"]
+  }
 }

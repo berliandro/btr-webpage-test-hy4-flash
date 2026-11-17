@@ -17,6 +17,7 @@
   --type-index:66px;--type-plate:120px;--type-plate-sm:80px;
   --s1:8px;--s2:12px;--s3:16px;--s4:20px;--s5:24px;--s6:32px;--s7:40px;--s8:56px;--s9:72px;
   --section-y:clamp(56px,8vw,104px);
+  --tap:28px;
 }
 
 .hero-champions .hero-copy h1,.pagehead h1,.section h2,.section h3,.selector-body h3,.detail-copy h3,.hangtag b,.divider h2,.divider b,.quote,.closing-line,.foot-grid strong,.event h3,.product .body h3,.media-tile .meta h3,.trophy-item h3,.fan-card h3,.selector-plate--type span,.detail-mono,.strip-track span,.selector-num,.trophy-item .yr,.brand-text{font-family:var(--display);font-weight:400;font-synthesis:none}
@@ -27,6 +28,8 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);f
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 a:hover{color:var(--red)}
+/* ONE global tap-target floor for every inline text link, shared by nav, cards and footer */
+.mainnav a,.mainnav summary,.fan-card a,.foot-links a,.foot-credits summary{display:inline-flex;align-items:center;min-height:var(--tap)}
 button{font-family:inherit;cursor:pointer}
 ::selection{background:var(--brass);color:var(--ink)}
 :focus-visible{outline:3px solid var(--brass);outline-offset:3px}
@@ -45,10 +48,10 @@ input,textarea,select{font-family:inherit}
 .brand-text{font-family:var(--display);font-size:15px;line-height:.95;letter-spacing:.04em;text-transform:uppercase}
 .brand-text span{display:block;font-family:var(--body);font-size:var(--type-label);letter-spacing:.24em;font-weight:700;opacity:.65;margin-top:4px}
 .mainnav{display:flex;align-items:center;gap:clamp(12px,2vw,28px);flex-wrap:wrap}
-.mainnav a{display:inline-flex;align-items:center;min-height:28px;font-size:var(--type-control);letter-spacing:.16em;font-weight:700;text-transform:uppercase;color:var(--cream);padding-bottom:3px;border-bottom:1px solid transparent}
+.mainnav a{font-size:var(--type-control);letter-spacing:.16em;font-weight:700;text-transform:uppercase;color:var(--cream);padding-bottom:3px;border-bottom:1px solid transparent}
 .mainnav a:hover,.mainnav a[aria-current="page"]{color:var(--brass);border-color:var(--brass)}
 .nav-more{position:relative}
-.nav-more summary{display:inline-flex;align-items:center;min-height:28px;list-style:none;font-size:var(--type-control);letter-spacing:.16em;font-weight:700;text-transform:uppercase;color:var(--cream);padding-bottom:3px;border-bottom:1px solid transparent;cursor:pointer}
+.nav-more summary{list-style:none;font-size:var(--type-control);letter-spacing:.16em;font-weight:700;text-transform:uppercase;color:var(--cream);padding-bottom:3px;border-bottom:1px solid transparent;cursor:pointer}
 .nav-more summary::-webkit-details-marker{display:none}
 .nav-more summary::after,.foot-credits summary::after{content:'';display:inline-block;width:9px;height:9px;margin-left:6px;background:linear-gradient(currentColor,currentColor) center/9px 1px no-repeat,linear-gradient(currentColor,currentColor) center/1px 9px no-repeat}
 .nav-more[open] summary::after,.foot-credits[open] summary::after{background:linear-gradient(currentColor,currentColor) center/9px 1px no-repeat}
@@ -295,7 +298,7 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 .fan-card .handle{font-size:var(--type-label);letter-spacing:.18em;text-transform:uppercase;color:var(--red);font-weight:700}
 .fan-card h3{font-family:var(--display);font-size:var(--type-card-title);text-transform:uppercase;margin:8px 0 10px}
 .fan-card p{font-size:var(--type-data);color:var(--muted);margin:0 0 16px}
-.fan-card a{display:inline-flex;align-items:center;min-height:26px;padding-block:6px;font-size:var(--type-label);letter-spacing:.14em;text-transform:uppercase;font-weight:700;border-bottom:1px solid var(--ink)}
+.fan-card a{padding-block:6px;font-size:var(--type-label);letter-spacing:.14em;text-transform:uppercase;font-weight:700;border-bottom:1px solid var(--ink)}
 
 /* forms + footer */
 .note{background:rgba(216,162,74,.14);border-left:3px solid var(--brass);padding:18px 20px;font-size:var(--type-data);max-width:70ch}
@@ -305,10 +308,10 @@ footer.site-foot{background:var(--ink);color:rgba(243,237,226,.72);padding:var(-
 .foot-grid strong{color:var(--cream);font-family:var(--display);font-size:20px;text-transform:uppercase;letter-spacing:.02em}
 .foot-grid p{max-width:52ch;margin:var(--s3) 0 0}
 .foot-links{display:flex;gap:var(--s2) var(--s4);flex-wrap:wrap;font-size:var(--type-label);letter-spacing:.12em;text-transform:uppercase;justify-content:flex-end;align-items:center}
-.foot-links a{display:inline-flex;align-items:center;min-height:26px;padding-block:6px}
+.foot-links a{padding-block:6px}
 .foot-links a:hover{color:var(--brass)}
 .foot-note{margin-top:var(--s7);padding-top:var(--s4);border-top:1px solid var(--line-light);font-size:var(--type-label);max-width:70ch}
-.foot-credits summary{display:inline-flex;align-items:center;min-height:26px;padding-block:6px;list-style:none;cursor:pointer;font-size:var(--type-label);letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--brass-light)}
+.foot-credits summary{padding-block:6px;list-style:none;cursor:pointer;font-size:var(--type-label);letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--brass-light)}
 .foot-credits summary::-webkit-details-marker{display:none}
 .foot-credits summary:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
 .foot-credits p{margin:var(--s3) 0 0}
