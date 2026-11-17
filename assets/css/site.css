@@ -26,6 +26,8 @@
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:var(--type-body);line-height:1.6;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
+/* hardening: long unbroken tokens (URLs, names, translations) stay inside their box */
+h1,h2,h3,h4,h5,h6,p,li,span,a,button,figcaption,td,th{overflow-wrap:anywhere}
 a{color:inherit;text-decoration:none}
 a:hover{color:var(--red)}
 /* ONE global tap-target floor for every inline text link, shared by nav, cards and footer */
