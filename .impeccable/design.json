@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-17T13:00:00.000Z",
+  "generatedAt": "2026-11-17T14:00:00.000Z",
   "title": "Design System: Bigetron by Vitality — Fan Hub",
   "extensions": {
     "colorMeta": {
@@ -34,7 +34,7 @@
       { "name": "strip-slide", "value": "30s linear infinite", "purpose": "Facts rail loop; pauses offscreen and on hover or focus." },
       { "name": "pointer-depth", "value": "transform .35s cubic-bezier(.16,1,.3,1)", "purpose": "Photo, copy and hangtag respond to pointer position." },
       { "name": "selector-duet", "value": "card .3s, plate .5s cubic-bezier(.22,1,.36,1)", "purpose": "Two rhythms on one object: the card lifts 3px/4px while the portrait rises 16px straight up and scales 1.05 from its feet, with no rotation." },
-      { "name": "dot-breath", "value": "9s/11s ease-in-out infinite alternate, transform scale .94 to 1.08", "purpose": "Two composited dot layers covering the whole roster section pulse in size at offset phases for a slow wave; opacity fixed, paused offscreen, static under reduced motion." }
+      { "name": "halftone-breath", "value": "per-dot radius oscillation, diagonal phase offset + jitter", "purpose": "One canvas clipped to the cream roster section draws a comic halftone grid; each dot grows and shrinks on its own phase, never scaling or sliding the field. One batched fill per frame, paused offscreen and under reduced motion." }
     ],
     "breakpoints": [
       { "name": "nav-collapse", "value": "900px" }
@@ -149,7 +149,8 @@
       { "name": "The True Weight Rule", "body": "Anton has one real weight. Never let the UA default 700 or font-synthesis invent a bold cut; reset headings to 400. Prose measures stay within 45-70ch and card titles share one 22px role.", "section": "typography" },
       { "name": "The Single-Theme Rule", "body": "The palette is exactly ten hex values, each equal to a declared token, with no dark-mode variant. A pinned single-theme brief is intentional here; a scheme swap would replace the lookbook's material identity. Do not introduce one.", "section": "colors" },
       { "name": "The Tap-Target Floor", "body": "Every inline text link - primary nav, More menu, fan cards, footer links and the credits disclosure - shares one min-height: var(--tap) rule (28px) defined once near the base link styles. Component padding stays local for visual reasons, but the hit-area floor is global. Functional text never drops below 11px.", "section": "components" },
-      { "name": "The Pinned Detector Exceptions", "body": "cramped-padding, marquee and cream-palette are suppressed in .impeccable/config.json because they flag pinned choices, not defects: full-bleed bands inset text via .wrap/--pad, the facts rail is a requested loop paused on hover/focus/offscreen, and --paper/--cream are named tokens with red as the dominant ground.", "section": "systemic-patterns" }
+      { "name": "The Pinned Detector Exceptions", "body": "cramped-padding, marquee and cream-palette are suppressed in .impeccable/config.json because they flag pinned choices, not defects: full-bleed bands inset text via .wrap/--pad, the facts rail is a requested loop paused on hover/focus/offscreen, and --paper/--cream are named tokens with red as the dominant ground.", "section": "systemic-patterns" },
+      { "name": "The Halftone Rule", "body": "The dots are printed texture on the cream paper, not a backdrop effect: they stay inside the section, keep one red at fixed opacity, and breathe by changing each dot's radius - never by scaling, sliding or rotating the field.", "section": "components" }
     ],
     "dos": [
       "Do let red occupy entire regions; do not sprinkle it as a highlight on a white template.",

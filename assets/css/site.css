@@ -100,11 +100,9 @@ input,textarea,select{font-family:inherit}
 .btn.brass{background:var(--brass);color:var(--ink);border-color:var(--brass)}
 
 /* roster — off-grid collectible selectors */
-.section--dots{position:relative;isolation:isolate}
-.section--dots::before,.section--dots::after{content:'';position:absolute;inset:-30%;z-index:-1;pointer-events:none;background-image:radial-gradient(var(--red) 1.6px,transparent 1.7px);background-size:28px 28px;opacity:.22;transform:translateZ(0) scale(1);animation:dotBreath 9s ease-in-out infinite alternate;animation-play-state:paused}
-.section--dots::after{background-size:40px 40px;opacity:.12;animation-duration:11s;animation-direction:alternate-reverse}
-.section--dots.is-visible::before,.section--dots.is-visible::after{animation-play-state:running;will-change:transform}
-@keyframes dotBreath{from{transform:translateZ(0) scale(.94)}to{transform:translateZ(0) scale(1.08)}}
+/* Halftone field: one canvas clipped to the cream section; every dot breathes on its own phase. */
+.section--dots{position:relative;isolation:isolate;overflow:hidden}
+.halftone{position:absolute;inset:0;z-index:-1;width:100%;height:100%;pointer-events:none;color:var(--red);opacity:.22}
 .roster-rack{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:100px var(--s5);margin-bottom:var(--s8);padding-top:110px}
 .selector-card{position:relative;isolation:isolate;background:var(--paper);border:3px solid var(--ink);box-shadow:var(--card-shadow);padding:168px var(--s5) 46px;min-height:320px;transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s cubic-bezier(.16,1,.3,1),border-color .3s ease,background .3s ease}
 .selector-card::before{content:'';position:absolute;top:0;left:0;right:0;height:152px;background:var(--red);z-index:0}
@@ -197,7 +195,7 @@ a[target="_blank"]::after{content:'';display:inline-block;width:6px;height:6px;b
   .selector-plate img,.selector-card:hover .selector-plate img,.selector-card:focus-visible .selector-plate img{filter:drop-shadow(0 12px 18px rgba(23,20,18,.25))}
   .strip-track{animation:none;width:auto;flex-wrap:wrap;padding:var(--s3) var(--pad)}
   .strip-group{padding-right:0;flex-wrap:wrap}
-  .section--dots::before,.section--dots::after{animation:none;transform:none;will-change:auto}
+  .halftone{opacity:.18}
 }
 
 /* two column feature */

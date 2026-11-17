@@ -68,7 +68,109 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   var dotSection = document.querySelector('.section--dots');
-  if (dotSection && 'IntersectionObserver' in window) {
+  var halftone = dotSection ? dotSection.querySelector('.halftone') : null;
+  if (halftone && halftone.getContext) {
+    var htCtx = halftone.getContext('2d');
+    var htMotion = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+    var htReduced = htMotion ? htMotion.matches : false;
+    var htVisible = false;
+    var htFrame = 0;
+    var htDots = [];
+    var htW = 0, htH = 0, htGap = 30, htRadius = 2.4;
+
+    var htMeasure = function () {
+      var rect = halftone.getBoundingClientRect();
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      htW = Math.max(1, Math.round(rect.width));
+      htH = Math.max(1, Math.round(rect.height));
+      halftone.width = Math.round(htW * dpr);
+      halftone.height = Math.round(htH * dpr);
+      htCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      htCtx.fillStyle = getComputedStyle(halftone).color;
+      htGap = htW < 640 ? 34 : 30;
+      htRadius = htGap * 0.08;
+      htDots = [];
+      for (var y = htGap / 2; y < htH; y += htGap) {
+        for (var x = htGap / 2; x < htW; x += htGap) {
+          var col = Math.round(x / htGap);
+          var row = Math.round(y / htGap);
+          htDots.push({
+            x: x,
+            y: y,
+            phase: (col + row) * 0.42 + ((col * 7 + row * 11) % 4) * 0.11
+          });
+        }
+      }
+    };
+
+    var htDraw = function (t) {
+      htCtx.clearRect(0, 0, htW, htH);
+      htCtx.beginPath();
+      for (var i = 0; i < htDots.length; i++) {
+        var d = htDots[i];
+        var wave = htReduced ? 0.5 : 0.5 + 0.5 * Math.sin(t * 0.0013 + d.phase);
+        var r = htRadius * (0.5 + 0.85 * wave);
+        htCtx.moveTo(d.x + r, d.y);
+        htCtx.arc(d.x, d.y, r, 0, Math.PI * 2);
+      }
+      htCtx.fill();
+    };
+
+    var htLoop = function (t) {
+      htDraw(t);
+      htFrame = window.requestAnimationFrame(htLoop);
+    };
+
+    var htSync = function () {
+      var run = htVisible && !htReduced && !document.hidden;
+      if (run && !htFrame) {
+        htFrame = window.requestAnimationFrame(htLoop);
+      } else if (!run && htFrame) {
+        window.cancelAnimationFrame(htFrame);
+        htFrame = 0;
+        htDraw(0);
+      }
+    };
+
+    htMeasure();
+    htDraw(0);
+    htSync();
+
+    if ('IntersectionObserver' in window) {
+      var htWatcher = new IntersectionObserver(function (entries) {
+        htVisible = entries[0].isIntersecting;
+        dotSection.classList.toggle('is-visible', htVisible);
+        htSync();
+      }, { threshold: 0.01 });
+      htWatcher.observe(dotSection);
+    } else {
+      htVisible = true;
+      dotSection.classList.add('is-visible');
+      htSync();
+    }
+
+    var htRemeasure = function () { htMeasure(); htDraw(0); };
+    if ('ResizeObserver' in window) {
+      new ResizeObserver(htRemeasure).observe(dotSection);
+    } else {
+      var htTimer;
+      window.addEventListener('resize', function () {
+        window.clearTimeout(htTimer);
+        htTimer = window.setTimeout(htRemeasure, 120);
+      }, { passive: true });
+    }
+    window.addEventListener('load', htRemeasure);
+
+    document.addEventListener('visibilitychange', htSync);
+
+    if (htMotion && htMotion.addEventListener) {
+      htMotion.addEventListener('change', function (e) {
+        htReduced = e.matches;
+        htDraw(0);
+        htSync();
+      });
+    }
+  } else if (dotSection && 'IntersectionObserver' in window) {
     var dotWatcher = new IntersectionObserver(function (entries) {
       dotSection.classList.toggle('is-visible', entries[0].isIntersecting);
     }, { threshold: 0.01 });

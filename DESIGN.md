@@ -103,7 +103,7 @@ The other five pages — shop, media, titles, matches and community — share th
 - Red as ground, not trim; cream paper as the quiet counter-surface.
 - Hangtags, woven labels, barcode-like strips and stitched dividers as the component vocabulary.
 - Square corners throughout; no rounded UI chrome.
-- Three quiet, user-pinned loops: the champions photograph breathes slowly, the facts rail slides continuously, and the roster section's dot field pulses in size like a slow wave; all pause offscreen. The photo, copy and hangtag also sit on pointer-driven depth planes. Everything else is still except immediate hover feedback.
+- Three quiet, user-pinned loops: the champions photograph breathes slowly, the facts rail slides continuously, and the roster section's halftone dots breathe one by one; all pause offscreen. The photo, copy and hangtag also sit on pointer-driven depth planes. Everything else is still except immediate hover feedback.
 - Honest, plainspoken copy that never implies team endorsement.
 - The roster home leads; the other pages inherit the shell and carry their own documented patterns.
 - Tab stops are actions: the selector rack reveals one player at a time, and focus is never visually removed.
@@ -206,10 +206,12 @@ Everything is square. Corners are 0px, buttons and cards are rectangles, and the
 - **Structure:** Four top-level entries — Roster, Shop, Matches and a "More" disclosure containing Media, Titles and Community. The repeated "Programmed to win" flag lives in the facts rail, not the nav row.
 - **Support:** A skip link targets `#main-content`; the full link set remains in the footer.
 
-### Dot field across the roster section — roster home
-- **Style:** A 24px tiled radial-gradient dot field on a single pseudo-element covering the entire roster section, tinted team red, visible behind the heading, between the cards and around their staggered edges.
-- **Motion:** The dots pulse in **size**, never in colour: two composited layers scale between `.94` and `1.08` on 9s and 11s cycles, the second reversed, so slow waves pass through the field. Opacity is fixed (`.22` and `.12`). No per-dot nodes, no JavaScript per frame, no layout-driving properties.
-- **Budget:** Transform-only animation on two promoted layers with `will-change: transform` only while in view; the loop pauses offscreen and becomes a static, untransformed field under `prefers-reduced-motion`.
+### Halftone field across the roster section — roster home
+- **Style:** A comic halftone on one `<canvas>` that fills the roster section exactly. Team-red dots sit on the cream ground at fixed opacity (`.22`), in a regular 30px grid (34px on narrow screens). The section clips the canvas, so no dot crosses its edge or bleeds into the neighbouring bands.
+- **Motion:** Each dot grows and shrinks on its own phase: its radius oscillates between about half and one and a quarter times its base, driven by a diagonal phase offset plus a small per-dot jitter. Neighbouring dots breathe independently. The field is never scaled, slid or rotated as a sheet, and its colour and opacity never change.
+- **Budget:** One canvas, one batched path fill per frame, device pixel ratio capped at 2. The loop runs only while the section is on screen and the tab is visible; it stops under `prefers-reduced-motion`, where a static halftone remains. A `ResizeObserver` keeps the backing store matched to the box after fonts and images settle layout.
+
+**The Halftone Rule.** The dots are printed texture on the cream paper, not a backdrop effect: they stay inside the section, keep one red at fixed opacity, and breathe by changing each dot's radius — never by scaling, sliding or rotating the field.
 
 ### Champions hero — roster home
 - **Composition:** Full-bleed 1920×1080 photograph under a left-to-right ink-to-red gradient plus a 28% red multiply wash, so the celebration stays on-world.
