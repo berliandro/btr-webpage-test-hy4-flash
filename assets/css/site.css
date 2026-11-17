@@ -454,3 +454,16 @@ footer.site-foot{background:var(--ink);color:rgba(243,237,226,.72);padding:var(-
   .foot-links{justify-content:flex-start}
 }
 
+/* touch context: 44px targets and tactile feedback; nothing here depends on hover */
+@media(pointer:coarse){
+  .mainnav a,.mainnav summary,.fan-card a,.foot-links a,.foot-credits summary,.skip-link{min-height:44px}
+  .filter{min-height:44px}
+  .product .links a,.product .links button{display:inline-flex;align-items:center;min-height:44px}
+  .btn:active{transform:translate(-2px,-2px)}
+  .selector-card:active{transform:translate(-2px,-3px)}
+  .match-row:active{transform:translateX(4px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .btn:active,.selector-card:active,.match-row:active{transform:none}
+}
+
