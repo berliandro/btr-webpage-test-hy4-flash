@@ -232,7 +232,7 @@ Everything is square. Corners are 0px, buttons and cards are rectangles, and the
 
 ### Masthead — other primary pages
 - **Style:** Full-bleed photograph under a red multiply wash and an ink-to-red gradient, stacked display title in cream and light brass, an identity line with a short brass rule, a one-line subtitle and an action row. A rotated hangtag may carry the drop number. Static by design: only the home hero breathes and follows the pointer.
-- **Purpose:** The non-home equivalent of the champions hero; used on shop, matches, titles, media, community and the 404 route. Even the error page keeps a clear way back instead of a bare banner. The flat `.pagehead` rules remain in the stylesheet as a fallback only.
+- **Purpose:** The non-home equivalent of the champions hero; used on shop, matches, titles, media, community and the 404 route. Even the error page keeps a clear way back instead of a bare banner. The flat pagehead pattern was retired when every route moved to the masthead.
 
 ### Reusable kit
 These classes live once in `site.css` and are shared by every page:

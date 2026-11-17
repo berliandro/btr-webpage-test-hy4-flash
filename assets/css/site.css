@@ -20,14 +20,15 @@
   --tap:28px;
 }
 
-.hero-champions .hero-copy h1,.pagehead h1,.section h2,.section h3,.selector-body h3,.detail-copy h3,.hangtag b,.divider h2,.divider b,.quote,.closing-line,.foot-grid strong,.event h3,.product .body h3,.media-tile .meta h3,.trophy-item h3,.fan-card h3,.selector-plate--type span,.detail-mono,.strip-track span,.selector-num,.trophy-item .yr,.brand-text{font-family:var(--display);font-weight:400;font-synthesis:none}
+.hero-champions .hero-copy h1,.section h2,.section h3,.selector-body h3,.detail-copy h3,.hangtag b,.divider h2,.divider b,.quote,.closing-line,.foot-grid strong,.event h3,.product .body h3,.media-tile .meta h3,.trophy-item h3,.fan-card h3,.selector-plate--type span,.detail-mono,.strip-track span,.selector-num,.trophy-item .yr,.brand-text{font-family:var(--display);font-weight:400;font-synthesis:none}
 
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:var(--type-body);line-height:1.6;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 /* hardening: long unbroken tokens (URLs, names, translations) stay inside their box */
-h1,h2,h3,h4,h5,h6,p,li,span,a,button,figcaption,td,th{overflow-wrap:anywhere}
+h2,h3,h4,h5,h6{overflow-wrap:break-word}
+p,li,span,a,button,figcaption,td,th{overflow-wrap:anywhere}
 a{color:inherit;text-decoration:none}
 a:hover{color:var(--red)}
 /* ONE global tap-target floor for every inline text link, shared by nav, cards and footer */
@@ -63,13 +64,6 @@ input,textarea,select{font-family:inherit}
 .menu-toggle{display:none;background:none;border:1px solid var(--line-light);color:var(--cream);padding:8px 12px;font-size:var(--type-label);letter-spacing:.12em;text-transform:uppercase}
 
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
-.pagehead{background:var(--red);color:var(--cream);padding:clamp(48px,8vw,96px) 0 clamp(42px,6vw,72px);position:relative;overflow:hidden}
-.pagehead::after{content:'';position:absolute;right:-60px;top:-60px;width:280px;height:280px;border:1px dashed var(--line-light);border-radius:50%;opacity:.5;pointer-events:none}
-.pagehead h1{font-family:var(--display);font-size:var(--type-display);line-height:.86;text-transform:uppercase;letter-spacing:-.01em;margin:0;max-width:14ch;text-wrap:balance}
-.pagehead p{max-width:62ch;margin:22px 0 0;font-size:clamp(15px,1.5vw,18px);color:var(--cream)}
-.head-meta{display:flex;gap:22px;flex-wrap:wrap;margin-top:28px;font-size:var(--type-label);letter-spacing:.16em;text-transform:uppercase;color:var(--cream)}
-.head-meta b{color:var(--brass-light);font-weight:700}
-
 .section{padding:var(--section-y) 0}
 .section.cream{background:var(--cream)}
 .section.ink{background:var(--ink);color:var(--cream)}
@@ -86,12 +80,7 @@ input,textarea,select{font-family:inherit}
 .product .body h3,.media-tile .meta h3,.trophy-item h3,.fan-card h3{font-size:var(--type-card-title)}
 .section.ink .intro{color:rgba(243,237,226,.82)}
 .section.red .intro,.section.red p{color:var(--cream)}
-.tagline.light{color:var(--brass-light)}
 .lead{font-size:clamp(17px,2vw,22px);line-height:1.5}
-
-.stitch{border:0;border-top:1px dashed var(--line);margin:0}
-.stitch.light{border-color:var(--line-light)}
-.tagline{display:inline-block;font-size:var(--type-label);letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--red);border:1px solid currentColor;padding:6px 10px}
 
 /* ---------- reusable kit — extracted from the roster reference ---------- */
 /* Photographic masthead: full-bleed image, red wash, stacked display title. Static by design; only the home hero breathes. */
@@ -298,10 +287,6 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 .media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:var(--s4)}
 .media-tile{position:relative;display:block;background:var(--ink);overflow:hidden;box-shadow:var(--shadow)}
 .media-tile .thumb{aspect-ratio:16/9;background:var(--red-deep);position:relative;overflow:hidden;display:grid;place-items:center}
-.thumb--red{background:var(--red)}
-.thumb--ink{background:var(--ink)}
-.thumb--brass{background:var(--brass)}
-.thumb--deep{background:var(--red-deep)}
 .media-tile .thumb img{width:100%;height:100%;object-fit:cover}
 .media-tile .thumb .play{position:absolute;inset:0;display:grid;place-items:center;background:rgba(23,20,18,.28)}
 .media-tile .thumb .play i{width:52px;height:52px;border:2px solid var(--cream);border-radius:50%;display:grid;place-items:center;color:var(--cream)}
