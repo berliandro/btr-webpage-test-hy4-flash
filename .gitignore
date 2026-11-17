@@ -7,6 +7,9 @@
 .impeccable/questions/
 .impeccable/config.local.json
 
+# Raw research downloads (large, rights-restricted originals — curated web assets live in assets/img)
+research/assets/
+
 # Local OS / editor noise
 .DS_Store
 Thumbs.db
