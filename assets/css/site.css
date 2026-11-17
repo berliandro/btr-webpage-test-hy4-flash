@@ -20,7 +20,7 @@
   --tap:28px;
 }
 
-.hero-champions .hero-copy h1,.section h2,.section h3,.selector-body h3,.detail-copy h3,.hangtag b,.divider h2,.divider b,.quote,.closing-line,.foot-grid strong,.event h3,.product .body h3,.media-tile .meta h3,.trophy-item h3,.fan-card h3,.selector-plate--type span,.detail-mono,.strip-track span,.selector-num,.trophy-item .yr,.brand-text{font-family:var(--display);font-weight:400;font-synthesis:none}
+.hero-champions .hero-copy h1,.masthead-copy h1,.section h2,.section h3,.selector-body h3,.detail-copy h3,.hangtag b,.divider h2,.divider b,.quote,.closing-line,.foot-grid strong,.event h3,.product .body h3,.media-tile .meta h3,.trophy-item h3,.fan-card h3,.selector-plate--type span,.detail-mono,.strip-track span,.selector-num,.trophy-item .yr,.brand-text{font-family:var(--display);font-weight:400;font-synthesis:none}
 
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
