@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-17T07:00:00.000Z",
+  "title": "Design System: Bigetron by Vitality — Fan Hub",
+  "extensions": {
+    "colorMeta": {
+      "team-red": { "role": "primary", "displayName": "Bigetron Red", "tonalRamp": ["#2E0509", "#57070D", "#7E0A11", "#A80D17", "#B21018", "#D3222C", "#E8656B", "#F5BABE"] },
+      "team-red-deep": { "role": "primary", "displayName": "Garment-Dyed Deep Red", "tonalRamp": ["#20040A", "#3E060D", "#5E0811", "#7E0A11", "#9A0E17", "#B81520", "#D6575E", "#EFA5A8"] },
+      "team-red-bright": { "role": "primary", "displayName": "Signal Red", "tonalRamp": ["#34050A", "#600A11", "#8C1018", "#B41B25", "#D3222C", "#E04A53", "#EA858B", "#F5C4C7"] },
+      "ink": { "role": "neutral", "displayName": "Woven Label Ink", "tonalRamp": ["#000000", "#0A0908", "#171412", "#2B2621", "#413A32", "#5C5348", "#8A8071", "#C4BBA9"] },
+      "cream": { "role": "neutral", "displayName": "Lookbook Cream", "tonalRamp": ["#4A4235", "#6E6250", "#968A75", "#BDB298", "#D9CFB8", "#E8DFCC", "#F3EDE2", "#FBF8F1"] },
+      "paper": { "role": "neutral", "displayName": "Paper Stock", "tonalRamp": ["#564E42", "#7A7162", "#A09886", "#C6BFAD", "#DDD6C6", "#EDE7D9", "#FBF7EE", "#FFFFFF"] },
+      "brass": { "role": "secondary", "displayName": "Hangtag Brass", "tonalRamp": ["#35280F", "#58421A", "#7C5E26", "#A37C34", "#C0933F", "#D8A24A", "#E8BF79", "#F4D79B"] },
+      "brass-light": { "role": "secondary", "displayName": "Light Brass", "tonalRamp": ["#3A321F", "#5E512F", "#827044", "#A68D5E", "#C7AC7C", "#DFC9A0", "#F7E6C4", "#FDF6E6"] },
+      "win": { "role": "secondary", "displayName": "Result Green", "tonalRamp": ["#082014", "#123D25", "#1C5A36", "#1C7A4A", "#2E9A61", "#4FB87C", "#88D2A8", "#C8ECD7"] },
+      "muted": { "role": "neutral", "displayName": "Secondary Slate", "tonalRamp": ["#221F1B", "#3A342C", "#514A3F", "#665D4F", "#6E655B", "#8D8477", "#B0A89C", "#D7D2C8"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display (Anton)", "purpose": "On the home page, 'OUR / CHAMPIONS'; elsewhere the flat pagehead title." },
+      "headline": { "displayName": "Headline (Anton)", "purpose": "Section titles such as THE 2026 LINEUP and THE RECORD, IN CLOTH." },
+      "title": { "displayName": "Title (Anton)", "purpose": "Player and card names, timeline event headings." },
+      "body": { "displayName": "Body (Barlow)", "purpose": "All reading copy, tables and UI text; tabular numerals for stats. Repeated sizes are role tokens in site.css: --type-display/headline/title/card-title/body/data/meta/control/label, plus --type-index and plate sizes." },
+      "label": { "displayName": "Label (Barlow 700)", "purpose": "Nav, chips, captions, table heads, flags and role chips; 11px minimum." }
+    },
+    "shadows": [
+      { "name": "card-lift", "value": "0 10px 24px rgba(23,20,18,.16), 0 2px 6px rgba(23,20,18,.12)", "purpose": "Ambient elevation for product cards, media tiles, figure plates and the hero hangtag." },
+      { "name": "press", "value": "2px 3px 8px rgba(23,20,18,.22)", "purpose": "Small blurred shadow consumed by the translate on button hover." },
+      { "name": "selector-rest", "value": "2px 3px 10px rgba(23,20,18,.18), 0 1px 3px rgba(23,20,18,.12)", "purpose": "The roster card's resting soft depth; emphasis comes from the red field and ink border." },
+      { "name": "selector-hover", "value": "3px 5px 16px rgba(23,20,18,.24), 0 1px 4px rgba(23,20,18,.14)", "purpose": "Roster card shadow on hover or focus as the card lifts and its border turns brass." }
+    ],
+    "motion": [
+      { "name": "hero-breath", "value": "22s ease-in-out infinite alternate", "purpose": "Slow scale and drift of the champions photograph; paused offscreen." },
+      { "name": "rule-pulse", "value": "5s ease-in-out infinite alternate", "purpose": "The brass identity rule beneath the hero identity line." },
+      { "name": "strip-slide", "value": "30s linear infinite", "purpose": "Facts rail loop; pauses offscreen and on hover or focus." },
+      { "name": "pointer-depth", "value": "transform .35s cubic-bezier(.16,1,.3,1)", "purpose": "Photo, copy and hangtag respond to pointer position." },
+      { "name": "selector-duet", "value": "card .3s, plate .5s cubic-bezier(.22,1,.36,1)", "purpose": "Two rhythms on one object: the card lifts 3px/4px while the portrait rises 16px straight up and scales 1.05 from its feet, with no rotation." },
+      { "name": "dot-breath", "value": "9s/11s ease-in-out infinite alternate, transform scale .94 to 1.08", "purpose": "Two composited dot layers covering the whole roster section pulse in size at offset phases for a slow wave; opacity fixed, paused offscreen, static under reduced motion." }
+    ],
+    "breakpoints": [
+      { "name": "nav-collapse", "value": "900px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The default action on light surfaces; becomes brass and lifts on hover.",
+      "html": "<button class=\"ds-btn-primary\">ENTER THE SHOP</button>",
+      "css": ".ds-btn-primary{background:#171412;color:#F3EDE2;border:1px solid #171412;border-radius:0;padding:14px 22px;font:700 11px/1.4 Barlow,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .18s cubic-bezier(.2,.8,.2,1),background .18s}.ds-btn-primary:hover{background:#D8A24A;border-color:#D8A24A;color:#171412;transform:translate(-2px,-2px);box-shadow:5px 5px 0 rgba(23,20,18,.28)}.ds-btn-primary:focus-visible{outline:3px solid #D8A24A;outline-offset:3px}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action on dark or red sections; stays cream over the hero and red grounds.",
+      "html": "<button class=\"ds-btn-ghost\">MEET THE FIVE</button>",
+      "css": ".ds-btn-ghost{background:transparent;color:inherit;border:1px solid currentColor;border-radius:0;padding:14px 22px;font:700 11px/1.4 Barlow,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .18s cubic-bezier(.2,.8,.2,1)}.ds-btn-ghost:hover{background:#F3EDE2;color:#171412;transform:translate(-2px,-2px);box-shadow:5px 5px 0 rgba(23,20,18,.28)}.ds-btn-ghost:focus-visible{outline:3px solid #D8A24A;outline-offset:3px}"
+    },
+    {
+      "name": "Brass Button",
+      "kind": "button",
+      "refersTo": "button-brass",
+      "description": "The single final call inside a red section.",
+      "html": "<button class=\"ds-btn-brass\">BROWSE THE SHOP</button>",
+      "css": ".ds-btn-brass{background:#D8A24A;color:#171412;border:1px solid #D8A24A;border-radius:0;padding:14px 22px;font:700 11px/1.4 Barlow,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .18s cubic-bezier(.2,.8,.2,1)}.ds-btn-brass:hover{background:#F3EDE2;border-color:#F3EDE2;transform:translate(-2px,-2px);box-shadow:5px 5px 0 rgba(23,20,18,.28)}.ds-btn-brass:focus-visible{outline:3px solid #171412;outline-offset:3px}"
+    },
+    {
+      "name": "Off-grid Selector Card",
+      "kind": "card",
+      "refersTo": "selector-card",
+      "description": "A roster entry as one brutalist object: transparent portrait seated on a red field and breaking over the card edge, with a distinct hover rhythm.",
+      "html": "<article class=\"ds-selector\" tabindex=\"0\"><div class=\"ds-plate\"></div><div class=\"ds-body\"><span class=\"ds-num\">03</span><h3>MORENO</h3><p class=\"ds-role\">MID LANE</p><p class=\"ds-real\">Marcel Sinulingga</p><div class=\"ds-stats\"><span><b>67</b>GAMES</span><span><b>MID</b>ROLE</span></div><span class=\"ds-flag\">FINALS MVP · S17</span></div></article>",
+      "css": ".ds-selector{position:relative;background:#FBF7EE;color:#171412;border:3px solid #171412;border-radius:0;box-shadow:8px 8px 0 #B21018;padding:168px 24px 46px;min-height:320px;font-family:Barlow,Arial,sans-serif;transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s cubic-bezier(.16,1,.3,1)}.ds-selector::before{content:'';position:absolute;top:0;left:0;right:0;height:152px;background:#B21018}.ds-selector:hover,.ds-selector:focus-visible{transform:translate(-4px,-6px);box-shadow:14px 16px 0 #D8A24A;outline:none}.ds-plate{position:absolute;top:-88px;left:50%;width:84%;max-width:250px;height:230px;background:#7E0A11;transform:translateX(-50%);transition:transform .42s cubic-bezier(.16,1,.3,1)}.ds-selector:hover .ds-plate,.ds-selector:focus-visible .ds-plate{transform:translateX(-50%) translateY(-20px) rotate(4deg) scale(1.04)}.ds-num{position:absolute;top:18px;right:20px;font:400 66px/.8 Anton,Impact,sans-serif;color:#F3EDE2;background:#B21018;padding:4px 10px}.ds-body h3{margin:0 0 12px;font:400 clamp(28px,3vw,40px)/.92 Anton,Impact,sans-serif;text-transform:uppercase}.ds-role{display:inline-block;background:#171412;color:#F3EDE2;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:5px 9px;margin:0 0 12px}.ds-real{font-size:13px;color:#6E655B;margin:0 0 24px}.ds-stats{display:flex;gap:24px;border-top:2px solid #171412;padding-top:12px;font-size:11px;letter-spacing:.1em;text-transform:uppercase}.ds-stats b{display:block;font:400 22px/1.1 Anton,Impact,sans-serif;color:#B21018}.ds-flag{position:absolute;left:0;right:0;bottom:0;background:#171412;color:#F3EDE2;font-size:11px;letter-spacing:.18em;text-transform:uppercase;text-align:center;padding:8px}"
+    },
+    {
+      "name": "Player Detail Panel",
+      "kind": "card",
+      "description": "An ink panel that reveals exactly one selected player from the roster rack.",
+      "html": "<div class=\"ds-detail\" aria-live=\"polite\"><div class=\"ds-detail-plate\"></div><div class=\"ds-detail-copy\"><span class=\"ds-detail-flag\">STARTER</span><h3>NNAEL</h3><p class=\"ds-detail-role\">JUNGLER</p><p class=\"ds-detail-real\">Manuel \"Nnael\" Simbolon</p><div class=\"ds-detail-stats\"><span><b>67</b>GAMES</span><span><b>JGL</b>ROLE</span></div><button class=\"ds-detail-close\" type=\"button\">CLOSE</button></div></div>",
+      "css": ".ds-detail{display:grid;grid-template-columns:240px minmax(0,1fr);gap:32px;align-items:center;background:#171412;color:#F3EDE2;border:3px solid #171412;padding:32px;font-family:Barlow,Arial,sans-serif}.ds-detail-plate{background:#B21018;min-height:260px}.ds-detail-flag{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#F7E6C4}.ds-detail-copy h3{margin:12px 0;font:400 clamp(36px,5vw,64px)/.9 Anton,Impact,sans-serif;text-transform:uppercase}.ds-detail-role{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#F7E6C4}.ds-detail-real{font-size:14px;color:#C9C3B8}.ds-detail-stats{display:flex;gap:32px;border-top:1px solid rgba(243,237,226,.32);padding-top:12px;font-size:11px;letter-spacing:.1em;text-transform:uppercase}.ds-detail-stats b{display:block;font:400 28px/1.1 Anton,Impact,sans-serif;color:#D8A24A}.ds-detail-close{margin-top:24px;background:transparent;color:#F3EDE2;border:1px solid rgba(243,237,226,.32);border-radius:0;padding:10px 16px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.ds-detail-close:hover{background:#D8A24A;color:#171412}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "description": "Four top-level entries with the remaining pages grouped under a More disclosure.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" aria-current=\"page\">ROSTER</a><a href=\"#\">SHOP</a><a href=\"#\">MATCHES</a><details class=\"ds-more\"><summary>MORE</summary><a href=\"#\">MEDIA</a><a href=\"#\">TITLES</a><a href=\"#\">COMMUNITY</a></details></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:28px;background:#171412;padding:18px 24px;font-family:Barlow,Arial,sans-serif}.ds-nav a,.ds-more summary{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#F3EDE2;text-decoration:none}.ds-nav a[aria-current=\"page\"]{color:#D8A24A;border-bottom:1px solid #D8A24A}.ds-more{position:relative}.ds-more summary{list-style:none;cursor:pointer}.ds-more a{display:block;padding:8px 0}"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "filter-chip",
+      "description": "A toggle for narrowing a results table; selected state inverts to ink.",
+      "html": "<button class=\"ds-filter\" aria-pressed=\"true\">WINS</button>",
+      "css": ".ds-filter{background:transparent;color:#171412;border:1px solid rgba(23,20,18,.18);border-radius:0;padding:9px 15px;font:700 11px/1.4 Barlow,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}.ds-filter:hover{border-color:#B21018;color:#B21018}.ds-filter[aria-pressed=\"true\"]{background:#171412;border-color:#171412;color:#F3EDE2}.ds-filter:focus-visible{outline:3px solid #D8A24A;outline-offset:3px}"
+    },
+    {
+      "name": "Stitched Divider",
+      "kind": "custom",
+      "description": "A dashed rule carrying a left-aligned heading and its count at the right edge; marks the official / fan-made boundary.",
+      "html": "<div class=\"ds-divider\"><h2 class=\"ds-heading\">OFFICIAL COLLECTION</h2><span class=\"ds-count\">CLUB-RUN STORES</span></div>",
+      "css": ".ds-divider{display:flex;align-items:baseline;gap:20px;border-top:1px dashed rgba(23,20,18,.18);padding-top:20px;margin:56px 0 32px;font-family:Barlow,Arial,sans-serif}.ds-heading{margin:0 auto 0 0;font:400 clamp(18px,2.4vw,28px)/1 Anton,Impact,sans-serif;text-transform:uppercase;white-space:nowrap}.ds-count{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#6E655B;white-space:nowrap}"
+    },
+    {
+      "name": "Page Head (other pages)",
+      "kind": "custom",
+      "description": "The flat red header used by shop, media, titles, matches and community in place of the champions photograph.",
+      "html": "<div class=\"ds-pagehead\"><h1>THE COLLECTION</h1><p>One rack, two rails.</p><div class=\"ds-meta\"><b>OFFICIAL</b> CLUB-RUN STORES</div></div>",
+      "css": ".ds-pagehead{background:#B21018;color:#F3EDE2;padding:clamp(48px,8vw,96px) 0 clamp(42px,6vw,72px);font-family:Barlow,Arial,sans-serif}.ds-pagehead h1{margin:0;font:400 clamp(52px,10vw,124px)/.86 Anton,Impact,sans-serif;text-transform:uppercase;letter-spacing:-.01em;max-width:14ch}.ds-pagehead p{max-width:62ch;margin:22px 0 0;font-size:clamp(15px,1.5vw,18px)}.ds-meta{margin-top:28px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}.ds-meta b{color:#F7E6C4}"
+    },
+    {
+      "name": "Product Card (shop)",
+      "kind": "card",
+      "refersTo": "product-card",
+      "description": "A merchandise entry with an authored SVG garment plate and separate official and fan-made outbound links.",
+      "html": "<article class=\"ds-product\"><div class=\"ds-art\"><span class=\"ds-badge\">NEW SEASON</span></div><div class=\"ds-info\"><h3>OFFICIAL JERSEY 2026</h3><p>Pre-order through the official store.</p><div class=\"ds-links\"><a href=\"#\">OFFICIAL SHOP</a><a href=\"#\">FIND LISTINGS</a></div></div></article>",
+      "css": ".ds-product{background:#FBF7EE;color:#171412;border:1px solid #171412;border-radius:0;box-shadow:0 10px 24px rgba(23,20,18,.16),0 2px 6px rgba(23,20,18,.12);font-family:Barlow,Arial,sans-serif;transition:transform .22s ease}.ds-product:hover{transform:translateY(-5px)}.ds-art{aspect-ratio:4/5;background:#F3EDE2;position:relative;display:grid;place-items:center}.ds-badge{position:absolute;top:12px;left:12px;background:#171412;color:#F3EDE2;font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:5px 8px}.ds-info{padding:18px}.ds-info h3{margin:0;font:400 20px/1.05 Anton,Impact,sans-serif;text-transform:uppercase}.ds-info p{font-size:13px;color:#6E655B}.ds-links a{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border:1px solid #171412;padding:8px 10px}"
+    },
+    {
+      "name": "Media Tile (media)",
+      "kind": "card",
+      "description": "An outbound news or video tile with a colored 16:9 thumb and a circular link mark.",
+      "html": "<a class=\"ds-media\" href=\"#\"><div class=\"ds-thumb\"></div><div class=\"ds-meta\"><small>CLUB NEWS</small><h3>BACK-TO-BACK CHAMPIONS</h3></div></a>",
+      "css": ".ds-media{display:block;background:#171412;color:#F3EDE2;box-shadow:0 10px 24px rgba(23,20,18,.16),0 2px 6px rgba(23,20,18,.12);font-family:Barlow,Arial,sans-serif}.ds-thumb{aspect-ratio:16/9;background:#B21018;display:grid;place-items:center}.ds-meta{padding:16px 18px 18px}.ds-meta small{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#D8A24A}.ds-meta h3{margin:8px 0 0;font:400 20px/1.05 Anton,Impact,sans-serif;text-transform:uppercase}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Drop Lookbook",
+    "overview": "This is a fan-built team hub dressed as a seasonal streetwear lookbook. The team's red is not an accent on a neutral page: it is a garment-dyed ground that owns whole regions, with ink black, warm paper and a single brass tone supporting it. The roster reads as a lineup, player details live on hangtags, and sections are joined by stitched rules rather than generic dividers. The result should feel like opening a collection, not scrolling a sports template. The roster home (index.html) is the reference implementation. Its champions hero, facts rail, off-grid selector rack, record table, history split and shop teaser are the most resolved expressions of this world, and new work should be judged against them first. The site is deliberately unofficial: every page states that it is fan-made, and the shop keeps official and fan-made merchandise visibly apart behind a thin stitched line. Imagery is real team photography and transparent player cutouts from the club's own portrait set; no player likeness is fabricated. Text is set in a condensed display face for names and a workhorse grotesk for everything functional, so hierarchy comes from scale and weight rather than decoration. The other five pages — shop, media, titles, matches and community — share the shell, tokens, footer and baseline grid, but have not received the same depth of refinement as the home page. Their distinct patterns are documented in Components so that nothing unique to them is lost when the home page leads.",
+    "keyCharacteristics": [
+      "Red as ground, not trim; cream paper as the quiet counter-surface.",
+      "Hangtags, woven labels, barcode-like strips and stitched dividers as the component vocabulary.",
+      "Square corners throughout; no rounded UI chrome.",
+      "Three quiet, user-pinned loops: the champions photograph breathes slowly, the facts rail slides continuously, and the roster section's dot field pulses in size like a slow wave; all pause offscreen. The photo, copy and hangtag also sit on pointer-driven depth planes. Everything else is still except immediate hover feedback.",
+      "Honest, plainspoken copy that never implies team endorsement.",
+      "The roster home leads; the other pages inherit the shell and carry their own documented patterns.",
+      "Tab stops are actions: the selector rack reveals one player at a time, and focus is never visually removed.",
+      "The primary navigation has four top-level entries with the remaining pages grouped under \"More\"."
+    ],
+    "rules": [
+      { "name": "The Red Ground Rule", "body": "If a region is red, its text is opaque cream. Tinted cream, muted gray and brass-on-red all fail; the red owns the region and the copy sits on top at full strength.", "section": "colors" },
+      { "name": "The Eleven-Pixel Floor", "body": "Nothing functional renders below 11px. The micro-label look comes from tracking and case, not from shrinking type.", "section": "typography" },
+      { "name": "The Home-First Rule", "body": "The roster home is the reference surface. When a component or spacing decision is ambiguous, copy what index.html does before inventing a new treatment, and treat the other pages as inheritors until they receive their own attention.", "section": "overview" },
+      { "name": "The One Reading Path Rule", "body": "Content text is always left-aligned. Only the punch-hole label on a hangtag and the small flag on a selector card are centred, because they are printed marks on an object rather than page copy.", "section": "layout" },
+      { "name": "The Edge-First Rule", "body": "Reach for a border before a shadow. A row of identical hairline-border-plus-wide-shadow cards is the default this world refuses.", "section": "elevation" },
+      { "name": "The Restrained Depth Rule", "body": "No hard offset shadows. Depth comes from a 2-3px offset and a soft blur; emphasis on selector cards comes from the brass border and red field, not a large coloured block behind the card.", "section": "elevation" },
+      { "name": "The Real Action Rule", "body": "Nothing is focusable without an action. The selector cards are buttons that reveal one player's detail and toggle it off on a second activation; :focus-visible always keeps a brass outline, including under reduced motion.", "section": "components" },
+      { "name": "The True Weight Rule", "body": "Anton has one real weight. Never let the UA default 700 or font-synthesis invent a bold cut; reset headings to 400. Prose measures stay within 45-70ch and card titles share one 22px role.", "section": "typography" }
+    ],
+    "dos": [
+      "Do let red occupy entire regions; do not sprinkle it as a highlight on a white template.",
+      "Do use real team photography once per editorial moment; do not invent player portraits or statistics.",
+      "Do keep official and fan-made merchandise visibly separate with working outbound links.",
+      "Do state \"unofficial fan hub\" in the header and footer of every page.",
+      "Do judge new work against the roster home first, then check the other-page patterns above before inventing a new component.",
+      "Do keep every tabbable element actionable and every focus state visible, especially under reduced motion."
+    ],
+    "donts": [
+      "Don't add rounded corners, glass blur, gradient text or neon glow.",
+      "Don't use Unicode glyphs as icons; draw marks in CSS and hide decorative ones from assistive tech.",
+      "Don't scatter entrance animations. The loops are explicit user requests: keep them slow, pause them offscreen and on hover for the rail, and preserve a reduced-motion path.",
+      "Don't let any functional text drop below 11px, and never place brass or tinted cream on red copy."
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+# Browser / tooling runtime
+.playwright-mcp/
+.impeccable/mocks/
+.impeccable/review/
+.impeccable/build/
+.impeccable/critique/
+.impeccable/questions/
+.impeccable/config.local.json
+
+# Local OS / editor noise
+.DS_Store
+Thumbs.db
+*.log
