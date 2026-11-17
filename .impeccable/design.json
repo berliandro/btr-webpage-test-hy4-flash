@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-17T15:00:00.000Z",
+  "generatedAt": "2026-11-17T16:00:00.000Z",
   "title": "Design System: Bigetron by Vitality — Fan Hub",
   "extensions": {
     "colorMeta": {
@@ -150,7 +150,8 @@
       { "name": "The Single-Theme Rule", "body": "The palette is exactly ten hex values, each equal to a declared token, with no dark-mode variant. A pinned single-theme brief is intentional here; a scheme swap would replace the lookbook's material identity. Do not introduce one.", "section": "colors" },
       { "name": "The Tap-Target Floor", "body": "Every inline text link - primary nav, More menu, fan cards, footer links and the credits disclosure - shares one min-height: var(--tap) rule (28px) defined once near the base link styles. Component padding stays local for visual reasons, but the hit-area floor is global. Functional text never drops below 11px.", "section": "components" },
       { "name": "The Pinned Detector Exceptions", "body": "cramped-padding, marquee and cream-palette are suppressed in .impeccable/config.json because they flag pinned choices, not defects: full-bleed bands inset text via .wrap/--pad, the facts rail is a requested loop paused on hover/focus/offscreen, and --paper/--cream are named tokens with red as the dominant ground.", "section": "systemic-patterns" },
-      { "name": "The Halftone Rule", "body": "The dots are printed texture on the cream paper, not a backdrop effect: they stay inside the section, keep one red at fixed opacity, and most stay at base size. Movement belongs to a few drifting blobs that swell dots locally with a soft edge - never to a uniform per-dot wave or a scaled, sliding field.", "section": "components" }
+      { "name": "The Halftone Rule", "body": "The dots are printed texture on the cream paper, not a backdrop effect: they stay inside the section, keep one red at fixed opacity, and most stay at base size. Movement belongs to a few drifting blobs that swell dots locally with a soft edge - never to a uniform per-dot wave or a scaled, sliding field.", "section": "components" },
+      { "name": "The Reusable Kit Rule", "body": "Every primary page uses the shared kit extracted from the roster home: a photographic .masthead with a red wash, .section-head, .facts rail (.strip), .plate for captioned imagery, .flag-strip on cards and .divider for tonal seams. The home hero keeps the only breathing and pointer motion; other mastheads stay still. The flat .pagehead remains only on the 404 route.", "section": "components" }
     ],
     "dos": [
       "Do let red occupy entire regions; do not sprinkle it as a highlight on a white template.",

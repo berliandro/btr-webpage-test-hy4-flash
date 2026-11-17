@@ -263,7 +263,17 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 .product:hover{transform:translateY(-5px);box-shadow:0 24px 48px rgba(23,20,18,.2)}
 .product .art{aspect-ratio:4/5;background:var(--cream);position:relative;display:grid;place-items:center;overflow:hidden}
 .product .art svg{width:64%;height:64%}
+.product .art img{width:100%;height:100%;object-fit:contain;padding:var(--s2)}
 .product .art .badge{position:absolute;top:12px;left:12px;background:var(--ink);color:var(--cream);font-size:var(--type-label);letter-spacing:.16em;text-transform:uppercase;padding:5px 8px}
+.product .flag-strip{margin-top:var(--s2)}
+.product .links button{background:transparent;border:1px solid var(--ink);color:var(--ink);padding:8px 10px;font-size:var(--type-label);letter-spacing:.12em;text-transform:uppercase;font-weight:700}
+.section.ink .product{background:rgba(243,237,226,.05);border-color:var(--line-light)}
+.section.ink .product .art{background:rgba(243,237,226,.08)}
+.section.ink .product .art .badge{background:var(--brass);color:var(--ink)}
+.section.ink .product .body h3{color:var(--cream)}
+.section.ink .product .body p{color:rgba(243,237,226,.82)}
+.section.ink .product .links a,.section.ink .product .links button{border-color:var(--line-light);color:var(--cream)}
+.section.ink .product .links a.fan:hover{background:var(--brass);border-color:var(--brass);color:var(--ink)}
 .product .body{padding:18px;display:flex;flex-direction:column;gap:8px;flex:1}
 .product .body h3{font-family:var(--display);font-size:var(--type-card-title);text-transform:uppercase;line-height:1.05;margin:0}
 .product .body p{font-size:var(--type-meta);color:var(--muted);margin:0;flex:1}

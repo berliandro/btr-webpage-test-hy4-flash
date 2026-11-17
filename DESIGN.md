@@ -97,7 +97,7 @@ This is a fan-built team hub dressed as a seasonal streetwear lookbook. The team
 
 **The roster home (`index.html`) is the reference implementation.** Its champions hero, facts rail, off-grid selector rack, record table, history split and shop teaser are the most resolved expressions of this world, and new work should be judged against them first. The site is deliberately unofficial: every page states that it is fan-made, and the shop keeps official and fan-made merchandise visibly apart behind a thin stitched line. Imagery is real team photography and transparent player cutouts from the club's own portrait set; no player likeness is fabricated. Text is set in a condensed display face for names and a workhorse grotesk for everything functional, so hierarchy comes from scale and weight rather than decoration.
 
-The other five pages — shop, media, titles, matches and community — share the shell, tokens, footer and baseline grid, but have not received the same depth of refinement as the home page. Their distinct patterns are documented in Components so that nothing unique to them is lost when the home page leads.
+The other five pages — shop, media, titles, matches and community — now share the shell, tokens, footer, reusable kit and baseline grid, each with a photographic masthead and a page-specific signature. The roster home remains the reference surface; their distinct patterns are documented in Components.
 
 **Key Characteristics:**
 - Red as ground, not trim; cream paper as the quiet counter-surface.
@@ -230,9 +230,18 @@ Everything is square. Corners are 0px, buttons and cards are rectangles, and the
 - **Style:** One dashed rule with a left-aligned display heading and a small count at the right edge.
 - **Purpose:** Separates official from fan-made merchandise and marks tonal shifts in long pages.
 
-### Pagehead — other pages
-- **Style:** Flat red band, cream title at display scale, 62ch description, and a wrapped row of 11px metadata labels. A faint dashed circle marks the far edge.
-- **Purpose:** The non-home equivalent of the champions hero; used on shop, media, titles, matches and community.
+### Masthead — other primary pages
+- **Style:** Full-bleed photograph under a red multiply wash and an ink-to-red gradient, stacked display title in cream and light brass, an identity line with a short brass rule, a one-line subtitle and an action row. A rotated hangtag may carry the drop number. Static by design: only the home hero breathes and follows the pointer.
+- **Purpose:** The non-home equivalent of the champions hero; used on shop, matches, titles, media and community. The flat `.pagehead` remains only on the 404 route.
+
+### Reusable kit
+These classes live once in `site.css` and are shared by every page:
+- `.masthead` with `.masthead-media`, `.masthead-wash`, `.masthead-copy`, `.masthead-id` and `.masthead-sub` — the photographic masthead.
+- `.strip` — the facts rail; duplicate its group and mark the second `aria-hidden="true"` for a seamless loop.
+- `.section-head` — heading plus intro as one stacked unit, with an optional count.
+- `.plate` — a captioned editorial image; always credit the photograph in the footer.
+- `.flag-strip` — the ink label used on hangtag cards.
+- `.divider` — the stitched seam between official and fan-made, and between tonal sections.
 
 ### Product cards — shop
 - **Style:** Square paper card, 1px ink border, ambient lift; 4:5 cream art field with an authored SVG garment and an ink badge.
