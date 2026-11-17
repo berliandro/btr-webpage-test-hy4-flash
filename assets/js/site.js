@@ -22,9 +22,29 @@ document.addEventListener('DOMContentLoaded', function () {
           var match = value === 'all' || categories.indexOf(value) !== -1;
           item.hidden = !match;
         });
+        document.querySelectorAll('.match-group').forEach(function (groupSection) {
+          groupSection.hidden = groupSection.querySelectorAll('.match-row:not([hidden])').length === 0;
+        });
       });
     });
   });
+
+  var matchRows = document.querySelectorAll('.match-row');
+  if (matchRows.length) {
+    if ('IntersectionObserver' in window) {
+      var rowWatcher = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            rowWatcher.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      matchRows.forEach(function (row) { rowWatcher.observe(row); });
+    } else {
+      matchRows.forEach(function (row) { row.classList.add('is-in'); });
+    }
+  }
 
   var hero = document.querySelector('.hero-champions');
   if (hero) {

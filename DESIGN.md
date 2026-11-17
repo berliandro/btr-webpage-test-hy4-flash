@@ -242,14 +242,17 @@ These classes live once in `site.css` and are shared by every page:
 - `.plate` — a captioned editorial image; always credit the photograph in the footer.
 - `.flag-strip` — the ink label used on hangtag cards.
 - `.divider` — the stitched seam between official and fan-made, and between tonal sections.
+- `.results` / `.match-group` / `.match-row` — the grouped, chronological results rail on Matches.
 
 ### Product cards — shop
 - **Style:** Square paper card, 1px ink border, ambient lift; 4:5 cream art field with an authored SVG garment and an ink badge.
 - **Links:** Solid ink for official sources, outline for fan-made searches, each with its own hover color. No prices are shown because they change.
 
-### Filter chips and results table — matches
-- **Style:** Transparent 11px uppercase chips with 1px borders; selected chips invert to ink with cream text (brass on dark).
-- **Behavior:** Each chip matches one token in a space-separated category, so a row can be both a win and a playoff match.
+### Results rail — matches
+- **Style:** The 24 results are grouped into three chronological stages — Playoffs (5), Regular season (16), MSC 2026 (3) — each opened by a stitched head with the stage name, series count and date range. A row carries only what changes: date, opponent, round, score and a Win/Loss pill. The stage is stated once in the group head, not repeated 24 times.
+- **Motion:** Rows reveal once as they enter view, then respond to hover or focus: the card slides 6px right, a brass bar grows from the left edge, the opponent shifts to red and the score scales up 10%. Reduced motion removes both the reveal and the hover movement.
+- **Non-colour cue:** Win and Loss pills carry the word plus a drawn check or cross; colour alone never carries the result.
+- **Behavior:** Filter chips match one token in a space-separated category, so a row can be both a win and a playoff match. Empty groups hide with their rows.
 
 ### Media tiles — media
 - **Style:** Ink card with a 16:9 thumb in one of four named color fields (red, ink, brass, deep red) and a circular play/link mark.
