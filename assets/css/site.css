@@ -417,10 +417,10 @@ footer.site-foot{background:var(--ink);color:rgba(243,237,226,.72);padding:var(-
   .hero-media{inset:-2%}
   .hero-wash{background:linear-gradient(180deg,rgba(23,20,18,.92) 0%,rgba(126,10,17,.76) 46%,rgba(178,16,24,.34) 100%)}
   .hero-champions .hero-copy{width:100%;padding:170px var(--pad) var(--s8);transform:none}
-  .hero-champions .hero-copy h1{font-size:clamp(52px,13vw,78px)}
+  .hero-champions .hero-copy h1{font-size:clamp(34px,13vw,78px)}
   .masthead{min-height:620px;display:block}
   .masthead-copy{max-width:100%;padding:170px var(--pad) var(--s8)}
-  .masthead-copy h1{font-size:clamp(52px,13vw,78px);max-width:100%}
+  .masthead-copy h1{font-size:clamp(34px,13vw,78px);max-width:100%}
   .masthead .hangtag{right:var(--pad);top:auto;bottom:24px}
   .hangtag-wrap{margin-top:var(--s5);transform:none}
   .roster-rack{grid-template-columns:repeat(2,minmax(0,1fr));gap:80px var(--s4);padding-top:90px}
